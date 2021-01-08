@@ -3,6 +3,15 @@ console.log("Clien side is working");
 const additBtnF = document.getElementById('additBtn');
 additBtnF.addEventListener('click', function(e){
     console.log('Addition is requested');
+    fetch('/add', {method:'POST'}).then(function(response){
+        if(response.ok){
+        console.log('Add click is recorded')
+        return;
+        }
+        throw new Error('Request failed');
+    }).catch(function(error){
+        console.log(error);
+    })
 });
 
 const subtrBtnF = document.getElementById('substrBtn');
